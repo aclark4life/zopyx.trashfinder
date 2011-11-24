@@ -1,6 +1,8 @@
 import sys
 from xmlrpclib import Server
 
+server = Server('http://pypi.python.org/pypi')
+
 def process_packages(packages):
 
     num_packages = len(packages)
@@ -54,7 +56,6 @@ def main():
     if len(sys.argv) > 1:
         prefix = sys.argv[1]
 
-    server = Server('http://pypi.python.org/pypi')
     packages = server.list_packages()
     if prefix:
         packages = [p for p in packages if p.startswith(prefix)]
