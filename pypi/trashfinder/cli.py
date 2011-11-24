@@ -1,16 +1,7 @@
 import sys
 from xmlrpclib import Server
 
-def main():
-
-    prefix = ''
-    if len(sys.argv) > 1:
-        prefix = sys.argv[1]
-
-    server = Server('http://pypi.python.org/pypi')
-    packages = server.list_packages()
-    if prefix:
-        packages = [p for p in packages if p.startswith(prefix)]
+def process_packages(packages):
 
     num_packages = len(packages)
 
@@ -56,6 +47,19 @@ def main():
                     print 'CRAP: %s==%s - no author and no maintainer email given' % (package, version)
             if not metadata['author'] and not metadata['maintainer']:
                     print 'CRAP: %s==%s - no author and no maintainer name given' % (package, version)
+
+def main():
+
+    prefix = ''
+    if len(sys.argv) > 1:
+        prefix = sys.argv[1]
+
+    server = Server('http://pypi.python.org/pypi')
+    packages = server.list_packages()
+    if prefix:
+        packages = [p for p in packages if p.startswith(prefix)]
+
+    process_packages(packages)
 
 
 if __name__ == '__main__':
