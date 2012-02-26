@@ -9,7 +9,7 @@ def process_packages(packages):
     num_packages = len(packages)
 
     for i, package in enumerate(packages):
-        results.append( 'Processing %r (%d/%d)' % (package, i+1, num_packages))
+        #results.append( 'Processing %r (%d/%d)' % (package, i+1, num_packages))
 
         versions = server.package_releases(package)
         versions.sort()
