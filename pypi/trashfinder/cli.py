@@ -40,16 +40,19 @@ def process_packages(packages):
             else:
                 download_url = metadata['download_url']
                 if download_url == 'UNKNOWN':
-                    results.append( 'No release files, no valid download_url')
+                    results.append( '%s - No release files, no valid download_url' %
+                        version)
 
             if len(metadata['description'] or '') < 40:
-                    results.append( 'description < 40 chars')
+                    results.append( '%s - description < 40 chars' % version)
             if len(metadata['summary'] or '') < 10:
-                    results.append( 'summary < 10 chars') 
+                    results.append( '%s - summary < 10 chars' % version) 
             if not metadata['author_email'] and not metadata['maintainer_email']:
-                    results.append( 'No author and no maintainer email given')
+                    results.append( '%s - No author and no maintainer email given' %
+                        version)
             if not metadata['author'] and not metadata['maintainer']:
-                    results.append( 'No author and no maintainer name given')
+                    results.append( '%s - No author and no maintainer name given' %
+                        version)
 
     return results
 
