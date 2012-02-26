@@ -14,7 +14,7 @@ def process_packages(packages):
         versions = server.package_releases(package)
         versions.sort()
         for version in versions:
-            results.append( '   %s' % str(version))
+            #results.append( '   %s' % str(version))
             urls = server.release_urls(package, version)
             metadata = server.release_data(package, version)
 
@@ -24,7 +24,7 @@ def process_packages(packages):
                 have_sdist = False
                 for url in urls:
                     url = url['url']
-                    results.append( '   %s' % str(url))
+                    #results.append( '   %s' % str(url))
                     if url.endswith('.bz2') or url.endswith('.zip') or url.endswith('gz'):
                         have_sdist = True
                     if url.endswith('egg'):
