@@ -33,8 +33,8 @@ def process_packages(packages):
                 if have_eggs and not have_sdist:
                     results.append( '%s has only egg release files but no sdist release file' % package)
 
-                if have_eggs and have_sdist:
-                    results.append( '%s has egg *and* sdist release file' % package)
+                #if have_eggs and have_sdist:
+                #    results.append( '%s has egg *and* sdist release file' % package)
 
             # externally hosted packages
             else:
