@@ -27,17 +27,15 @@ def process_package(package):
         else:  # externally hosted packages
             download_url = metadata['download_url']
             if download_url == 'UNKNOWN':
-                msg = '%s - No release files, no valid download_url'
-                results.append(msg % version)
+                msg = 'No release files, no valid download_url'
+                results.append(msg)
         if len(metadata['description'] or '') < 40:
-            msg = '%s - description < 40 chars'
-            results.append(msg % version)
+            msg = 'description < 40 chars'
+            results.append(msg)
         if len(metadata['summary'] or '') < 10:
-            results.append('%s - summary < 10 chars' % version)
+            results.append('summary < 10 chars')
         if not metadata['author_email'] and not metadata['maintainer_email']:
-            results.append('%s - No author and no maintainer email given' %
-                version)
+            results.append('No author and no maintainer email given')
         if not metadata['author'] and not metadata['maintainer']:
-            results.append('%s - No author and no maintainer name given' %
-                version)
+            results.append('No author and no maintainer name given')
     return results
